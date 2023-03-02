@@ -37,7 +37,12 @@ const getWeather = (city) => {
 
 submit.addEventListener("click", (e) => {
     e.preventDefault();
-    getWeather(city.value)
+    const strRe = "^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$";
+    if (city.value != '' && isNaN(city.value) && city.value.match(strRe))
+    {
+        getWeather(city.value)
+    }
+    city.value = '';
 });
 
 getWeather("Delhi");
